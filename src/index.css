@@ -1,0 +1,28 @@
+:root {
+  --main-font: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
+  --font-color: rgb(255, 255, 255);
+  --background-color-main: rgb(19, 9, 46);
+  --background-color-block: rgba(255, 255, 255, 0.822);
+  --shadow: rgb(255, 255, 255) 0px 1px 3px, rgb(5, 5, 5) 0px 1px 3px;
+  --gradient: linear-gradient(90deg, rgba(36, 36, 44, 0.651) 0%, rgba(237, 237, 240, 0.329) 35%, rgba(36, 37, 37, 0.397) 100%);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color-main);
+  font-size: var(--main-font);
+  color: var(--font-color);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
