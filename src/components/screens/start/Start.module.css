@@ -1,4 +1,10 @@
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
   text-align: center;
+  border: 1px solid;
 }
 
