@@ -1,8 +1,35 @@
 .container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    border-radius: .5rem;
+    width: 10rem;
+    height: 13rem;
+    margin: .5rem;
+    background: var(--gradient);
+    box-shadow: var(--shadow);
+    transition: all ease-in .1s;
+}
+
+.container:hover {
+    transform: scale(1.1);
 }
 
 .imgHolder {
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+
+}
+
+.img {
     display: flex;
+    width: 8rem;
+}
+
+.header {
+    display: flex;
+    text-align: center;
+    margin-top: 1rem;
 }

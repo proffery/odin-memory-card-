@@ -1,5 +1,7 @@
 import styles from './Game.module.css'
 import { useState } from 'react'
+import { Planets } from '../../../Planets'
+import Card from './card/Card'
 
 const Game = (prop) => {
 
@@ -24,10 +26,14 @@ const Game = (prop) => {
 
     return (
         <div className={styles.container}>
-            <h1>Game</h1>
+            {/* <h1>Game</h1>
             <button onClick={handleScore}>Increment score</button>
             <button onClick={handleRound}>Increment round</button>
-            <button onClick={handleBestScore}>Increment Best score</button>
+            <button onClick={handleBestScore}>Increment Best score</button> */}
+            {Planets.map(planet =>
+                <Card key={'pl'+ planet.id} id={planet.id} name={planet.name} className={styles.card}/>
+            )}
+
         </div>
     )
 }

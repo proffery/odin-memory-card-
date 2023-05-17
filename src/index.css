@@ -3,7 +3,7 @@
   --font-color: rgb(255, 255, 255);
   --background-color-main: rgb(19, 9, 46);
   --background-color-block: rgba(255, 255, 255, 0.822);
-  --shadow: rgb(255, 255, 255) 0px 1px 3px, rgb(5, 5, 5) 0px 1px 3px;
+  --shadow: rgba(255, 255, 255, 0.3) 0px 0px 0px 3px;
   --gradient: linear-gradient(90deg, rgba(36, 36, 44, 0.651) 0%, rgba(237, 237, 240, 0.329) 35%, rgba(36, 37, 37, 0.397) 100%);
 }
 

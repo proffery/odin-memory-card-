@@ -1,4 +1,7 @@
 .container {
     display: flex;
-    background-color: var(--background-color-block);
+    flex-wrap: wrap;
+    background-color: var(--background-color-main);
+    align-items: center;
+    justify-content: center;
 }
