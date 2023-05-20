@@ -28,6 +28,8 @@ body {
 }
 
 .footer {
+  position: sticky;
+  top: 95%;
   display: flex;
   align-self: center;
   justify-content: center;

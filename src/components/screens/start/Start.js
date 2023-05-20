@@ -14,7 +14,7 @@ const Start = () => {
 
   
   const startGameHandler = () => {
-    setIsGameStarted((prev) => !prev)
+    setIsGameStarted(true)
     setScore(0)
     setRound(1)
   }
@@ -35,6 +35,7 @@ const Start = () => {
 
   const onGameStart = (startGameFlag) => {
     setIsGameStarted (startGameFlag)
+    startGameHandler()
   }
 
   return (
