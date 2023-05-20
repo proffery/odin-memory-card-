@@ -3,28 +3,38 @@ import { useState } from 'react'
 import styles from './Start.module.css'
 import Scores from '../../scores/Scores'
 import Game from '../game/Game'
+import End from '../end/End'
 
 const Start = () => {
-  const [isGameStarted, setIsGAmeStarted] = useState(false)
+  const [isGameStarted, setIsGameStarted] = useState(false)
+  const [isGameEnded, setIsGameEnded] = useState(false)
   const [score, setScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
   const [round, setRound] = useState(0)
 
+  
   const startGameHandler = () => {
-    setIsGAmeStarted((prev) => !prev)
+    setIsGameStarted((prev) => !prev)
     setScore(0)
     setRound(1)
   }
   const changeScore = (newScore) => {
     setScore(newScore)
-  }
-
-  const changeBestScore = (newBestScore) => {
-    setBestScore(newBestScore)
+    if (bestScore < newScore) {
+      setBestScore(newScore)
+    }
   }
 
   const changeRound = (newRound) => {
     setRound(newRound)
+  }
+
+  const onGameEnd = (endGameFlag) => {
+    setIsGameEnded(endGameFlag)
+  }
+
+  const onGameStart = (startGameFlag) => {
+    setIsGameStarted (startGameFlag)
   }
 
   return (
@@ -35,9 +45,10 @@ const Start = () => {
         Start new game?
         <button type='button' onClick={startGameHandler}>Start</button>
       </div>
-      ) : (
-        <Game prop={{score, bestScore, round}} onChangeScore={changeScore} onChangeBestScore={changeBestScore} onChangeRound={changeRound}/>
-      )}
+      ) : !isGameEnded ? (
+        <Game prop={{score, bestScore, round, isGameStarted, isGameEnded}} 
+        onChangeScore={changeScore} onChangeRound={changeRound} onGameEnd={onGameEnd}/>
+      ) : (<End prop={{isGameStarted, isGameEnded}} onGameEnd={onGameEnd} onGameStart={onGameStart}/>)}
     </React.StrictMode>
   )
 };

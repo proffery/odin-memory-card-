@@ -1,4 +1,4 @@
-export const Planets = [
+export const cards = [
     {id: 0, name: 'Zephyria'},
     {id: 1, name: 'Celestria'},
     {id: 2, name: 'Elysium'},
