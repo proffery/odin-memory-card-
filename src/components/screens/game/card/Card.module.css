@@ -12,7 +12,7 @@
     transition: all ease-in .1s;
 }
 
-.container:hover {
+.container:focus {
     transform: scale(1.1);
 }
 

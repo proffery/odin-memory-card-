@@ -42,10 +42,13 @@ const Start = () => {
     <React.StrictMode>
       <Scores score={score} best={bestScore} round={round}/>
       {!isGameStarted ? (
-      <div className={styles.container}>
-        Start new game?
-        <button type='button' onClick={startGameHandler}>Start</button>
-      </div>
+        <div className={styles.container}>
+          <img src={'/assets/img/cards/card' + Math.floor(Math.random() * 30) + '.jpg'} alt='logo' className={styles.logo}/>
+          <div className={styles.window}>
+            Start new game?
+            <button type='button' onClick={startGameHandler}>Start</button>
+          </div>
+        </div>
       ) : !isGameEnded ? (
         <Game prop={{score, bestScore, round, isGameStarted, isGameEnded}} 
         onChangeScore={changeScore} onChangeRound={changeRound} onGameEnd={onGameEnd}/>

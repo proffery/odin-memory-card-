@@ -1,21 +1,12 @@
-import { useState } from 'react'
 import styles from './Card.module.css'
 
 
 const Card = (prop) => {
-    const [isCardChecked, setIsCardChecked] = useState(false)
-    
     const onClickHandler = () => {
-        if(!isCardChecked) {
-            setIsCardChecked(true)
-            prop.onFirstClick()
-        }
-        else {
-            prop.onSecondClick()
-        }
+        prop.onClick(prop.prop.id)
     }
     return (
-        <div className={styles.container} onClick={onClickHandler}>
+        <div onClick={onClickHandler} className={styles.container}>
             <div className={styles.imgHolder}>
                 <img className={styles.img} src={'/assets/img/cards/card' + prop.prop.id + '.jpg'} alt={prop.prop.name}></img>
             </div>

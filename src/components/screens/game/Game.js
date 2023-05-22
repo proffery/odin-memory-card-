@@ -8,7 +8,7 @@ const Game = (prop) => {
     const [updateRound, setUpdateRound] = useState(prop.prop.round)
     const [updateIsGameEnded, setUpdateIsGameEnded] = useState(prop.prop.isGameEnded)
     const [randCards, setRandCards] = useState([])
-    const [clickCounter, setClickCounter] = useState(0)
+    const [clickIdList, setClickIdList] = useState([])
     
     const shuffle = (array) => {
         let currentIndex = array.length,  randomIndex;
@@ -20,27 +20,49 @@ const Game = (prop) => {
         return array;
     }
     
-    const onFirstClickHandler = () => {
-        if (clickCounter < updateRound) {
+    const isRoundEnded = (array) => {
+        for(let i = 0; i < array.length; i++) {
+            if (array[i].checked === false) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    const onClickHandler = (id) => {
+
+
+        if(clickIdList.includes(id)){
+            setUpdateIsGameEnded(true)
+        }
+
+        const randCardsCopy = randCards.map(card => {
+            if (card.id === id) {
+                return {...card, checked: true}
+            }
+            return card
+        })
+        
+        setRandCards(randCardsCopy)
+
+        if (!isRoundEnded(randCardsCopy)) {
             setUpdateScore(updateScore + 1)
             prop.onChangeScore(updateScore + 1)
-            const shuffledArray = shuffle(randCards)
+            const shuffledArray = shuffle(randCardsCopy)
             setRandCards(shuffledArray)
-            setClickCounter(clickCounter + 1)
+            setClickIdList(prev => [...prev, id])
+
         }
         else {
-            setClickCounter(0)
+            setClickIdList([])
             setUpdateRound(updateRound + 1)
             prop.onChangeRound(updateRound + 1)
         }
     }
 
-    const onSecondClickHandler = () => {
-        setUpdateIsGameEnded(true)
-    }
     useEffect(() => {
         if(cards.length < updateRound + 1) {
-            return 'ERROR'
+            setUpdateIsGameEnded(true)
         }
         else {
             const newArray = [...cards]
@@ -51,12 +73,13 @@ const Game = (prop) => {
         if (updateIsGameEnded) {
             prop.onGameEnd(updateIsGameEnded)
         }
-    },[updateRound, updateIsGameEnded])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [updateRound, updateIsGameEnded])
 
     return (
         <div className={styles.container}>
             {randCards.map(card =>
-                <Card key={'pl'+ card.id} prop={card} className={styles.card} onFirstClick={onFirstClickHandler} onSecondClick={onSecondClickHandler}/>
+                <Card key={'pl'+ card.id} prop={card} className={styles.card} onClick={onClickHandler}/>
             )}
         </div>
     )

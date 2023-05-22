@@ -1,4 +1,10 @@
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -8,5 +14,29 @@
   text-align: center;
   border: 1px solid;
   padding: 1rem;
+  background: var(--gradient);
+  border-radius: .5rem;
 }
 
+.logo {
+  height: 60vmin;
+  pointer-events: none;
+  border-radius: 100rem;
+  box-shadow: var(--shadow);
+  margin: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

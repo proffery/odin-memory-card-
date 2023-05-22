@@ -1,4 +1,18 @@
 .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 50vmin;
+  pointer-events: none;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin: 1rem;
+}
+
+.window {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -8,4 +22,6 @@
     text-align: center;
     border: 1px solid;
     padding: 1rem;
+    background: var(--gradient);
+    border-radius: .5rem;
 }

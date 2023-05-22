@@ -21,10 +21,21 @@ body {
   background-color: var(--background-color-main);
   font-size: var(--main-font);
   color: var(--font-color);
+  background-image: url('../public/assets/img/background.jpg');
   background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+button {
+  display: flex;
+  align-self: center;
+  width: fit-content;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
 .footer {
@@ -32,8 +43,29 @@ body {
   top: 95%;
   display: flex;
   align-self: center;
+  align-items: center;
   justify-content: center;
   font-size: calc(var(--main-font) - 7px);
   text-align: center;
   padding: .5rem;
+  margin-top: 1rem;
+}
+
+.footer p {
+  display: flex;
+  align-items: center;
+}
+
+.footer a {
+  color: var(--background-color-block);
+  margin: .2rem;
+}
+
+.github-logo {
+  height: 1rem;
+  filter: invert();
+  transition: all .3s;
+}
+.github-logo:hover {
+  transform: rotate(360deg);
 }

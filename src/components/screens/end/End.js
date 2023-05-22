@@ -6,9 +6,13 @@ const End = (prop) => {
         prop.onGameEnd(false)
     }
 
-    return <div className={styles.container}>The game is over.
-        <button onClick={changeFlags}>Start new game?</button>
+    return <div className={styles.container}>
+        <img className={styles.logo} alt='end-logo' src='/assets/img/end-game.jpg'></img>
+        <div className={styles.window}>The game is over.
+            <button onClick={changeFlags}>Start</button>
+        </div>
     </div>
+    
 }
 
 export default End
