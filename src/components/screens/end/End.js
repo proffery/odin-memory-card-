@@ -7,7 +7,7 @@ const End = (prop) => {
     }
 
     return <div className={styles.container}>
-        <img className={styles.logo} alt='end-logo' src='/assets/img/end-game.jpg'></img>
+        <img className={styles.logo} alt='end-logo' src='./assets/img/end-game.jpg'></img>
         <div className={styles.window}>The game is over.
             <button onClick={changeFlags}>Start</button>
         </div>

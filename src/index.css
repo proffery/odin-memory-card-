@@ -21,7 +21,7 @@ body {
   background-color: var(--background-color-main);
   font-size: var(--main-font);
   color: var(--font-color);
-  background-image: url('../public/assets/img/background.jpg');
+  background-image: url('../build/assets/img/background.jpg');
   background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;

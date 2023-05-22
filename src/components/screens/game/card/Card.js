@@ -8,7 +8,7 @@ const Card = (prop) => {
     return (
         <div onClick={onClickHandler} className={styles.container}>
             <div className={styles.imgHolder}>
-                <img className={styles.img} src={'/assets/img/cards/card' + prop.prop.id + '.jpg'} alt={prop.prop.name}></img>
+                <img className={styles.img} src={'./assets/img/cards/card' + prop.prop.id + '.jpg'} alt={prop.prop.name}></img>
             </div>
             <h4 className={styles.header}>{prop.prop.name}</h4>
         </div>

@@ -43,7 +43,7 @@ const Start = () => {
       <Scores score={score} best={bestScore} round={round}/>
       {!isGameStarted ? (
         <div className={styles.container}>
-          <img src={'/assets/img/cards/card' + Math.floor(Math.random() * 30) + '.jpg'} alt='logo' className={styles.logo}/>
+          <img src={'./assets/img/cards/card' + Math.floor(Math.random() * 30) + '.jpg'} alt='logo' className={styles.logo}/>
           <div className={styles.window}>
             Start new game?
             <button type='button' onClick={startGameHandler}>Start</button>
