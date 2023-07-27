@@ -2,6 +2,7 @@ import styles from './Game.module.css'
 import { useEffect, useState } from 'react'
 import { cards } from '../../../Cards'
 import Card from './card/Card'
+import Flip from 'react-reveal/Flip'
 
 const Game = (prop) => {
     const [updateScore, setUpdateScore] = useState(prop.prop.score)
@@ -79,7 +80,9 @@ const Game = (prop) => {
     return (
         <div className={styles.container}>
             {randCards.map(card =>
-                <Card key={'pl'+ card.id} prop={card} className={styles.card} onClick={onClickHandler}/>
+                <Flip left>
+                    <Card key={'pl'+ card.id} prop={card} className={styles.card} onClick={onClickHandler}/>
+                </Flip>
             )}
         </div>
     )
