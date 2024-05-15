@@ -4,10 +4,7 @@ import { cards } from '../../../Cards'
 import Card from './card/Card'
 import Flip from 'react-reveal/Flip'
 
-const Game = (prop) => {
-    const [updateScore, setUpdateScore] = useState(prop.prop.score)
-    const [updateRound, setUpdateRound] = useState(prop.prop.round)
-    const [updateIsGameEnded, setUpdateIsGameEnded] = useState(prop.prop.isGameEnded)
+const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScore}) => {
     const [randCards, setRandCards] = useState([])
     const [clickIdList, setClickIdList] = useState([])
     
@@ -34,7 +31,8 @@ const Game = (prop) => {
 
 
         if(clickIdList.includes(id)){
-            setUpdateIsGameEnded(true)
+            onGameEnd(true)
+            return
         }
 
         const randCardsCopy = randCards.map(card => {
@@ -46,9 +44,8 @@ const Game = (prop) => {
         
         setRandCards(randCardsCopy)
 
-        if (!isRoundEnded(randCardsCopy)) {
-            setUpdateScore(updateScore + 1)
-            prop.onChangeScore(updateScore + 1)
+        if (!isRoundEnded(randCardsCopy) && !isGameEnded) {
+            onChangeScore(score + 1)
             const shuffledArray = shuffle(randCardsCopy)
             setRandCards(shuffledArray)
             setClickIdList(prev => [...prev, id])
@@ -56,32 +53,28 @@ const Game = (prop) => {
         }
         else {
             setClickIdList([])
-            setUpdateRound(updateRound + 1)
-            prop.onChangeRound(updateRound + 1)
+            onChangeRound(prev => prev + 1)
         }
     }
 
     useEffect(() => {
-        if(cards.length < updateRound + 1) {
-            setUpdateIsGameEnded(true)
+        if(cards.length < round + 1) {
+            onGameEnd(true)
         }
         else {
             const newArray = [...cards]
             const shuffledArray = shuffle(newArray)
-            const selectedElements = shuffledArray.slice(0, updateRound + 1)
+            const selectedElements = shuffledArray.slice(0, round + 1)
             setRandCards(selectedElements)
         }
-        if (updateIsGameEnded) {
-            prop.onGameEnd(updateIsGameEnded)
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [updateRound, updateIsGameEnded])
+    }, [round, isGameEnded])
 
     return (
         <div className={styles.container}>
             {randCards.map(card =>
-                <Flip left>
-                    <Card key={'pl'+ card.id} prop={card} className={styles.card} onClick={onClickHandler}/>
+                <Flip left key={'pl'+ card.id}>
+                    <Card card={card} onClick={onClickHandler}/>
                 </Flip>
             )}
         </div>

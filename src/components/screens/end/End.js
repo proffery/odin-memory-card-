@@ -1,9 +1,9 @@
 import styles from './End.module.css'
 
-const End = (prop) => {
+const End = ({onGameStart, onGameEnd}) => {
     const changeFlags = () => {
-        prop.onGameStart(true)
-        prop.onGameEnd(false)
+        onGameStart(true)
+        onGameEnd(false)
     }
 
     return <div className={styles.container}>
