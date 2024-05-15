@@ -7,6 +7,19 @@ import Flip from 'react-reveal/Flip'
 const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScore}) => {
     const [randCards, setRandCards] = useState([])
     const [clickIdList, setClickIdList] = useState([])
+    const clickedSound = new Audio('./assets/sounds/click.wav')
+    const roundSound = new Audio('./assets/sounds/round.mp3')
+    const gameEndSound = new Audio('./assets/sounds/game-over.mp3')
+
+    const onClickSound = async () => {
+        await clickedSound.play()
+    }
+    const onRoundSound = async () => {
+        await roundSound.play()
+    }
+    const onGameEndSound = async () => {
+        await roundSound.play()
+    }
     
     const shuffle = (array) => {
         let currentIndex = array.length,  randomIndex;
@@ -27,11 +40,12 @@ const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScor
         return true
     }
     
-    const onClickHandler = (id) => {
-
+    const onClickHandler = async (id) => {
+        await onClickSound()
 
         if(clickIdList.includes(id)){
             onGameEnd(true)
+            await onGameEndSound()
             return
         }
 
@@ -49,7 +63,7 @@ const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScor
             const shuffledArray = shuffle(randCardsCopy)
             setRandCards(shuffledArray)
             setClickIdList(prev => [...prev, id])
-
+            await onRoundSound()
         }
         else {
             setClickIdList([])
@@ -59,7 +73,7 @@ const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScor
 
     useEffect(() => {
         if(cards.length < round + 1) {
-            onGameEnd(true)
+            onGameEndSound().then(()=>onGameEnd(true))
         }
         else {
             const newArray = [...cards]

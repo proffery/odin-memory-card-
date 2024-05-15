@@ -2,13 +2,9 @@ import styles from './Card.module.css'
 
 
 const Card = ({card, onClick}) => {
-    const onClickSound = () => {
-        const clickedSound = new Audio('./assets/sounds/click.wav')
-    }
 
     const onClickHandler = () => {
         onClick(card.id)
-        onClickSound()
     }
     return (
         <div onClick={onClickHandler} className={styles.container} tabIndex={0}>
