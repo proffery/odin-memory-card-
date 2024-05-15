@@ -63,11 +63,11 @@ const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScor
             const shuffledArray = shuffle(randCardsCopy)
             setRandCards(shuffledArray)
             setClickIdList(prev => [...prev, id])
-            await onRoundSound()
         }
         else {
             setClickIdList([])
             onChangeRound(prev => prev + 1)
+            await onRoundSound()
         }
     }
 
