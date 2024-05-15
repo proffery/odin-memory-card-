@@ -18,7 +18,7 @@ const Game = ({onGameEnd, isGameEnded, onChangeRound, round, score, onChangeScor
         await roundSound.play()
     }
     const onGameEndSound = async () => {
-        await roundSound.play()
+        await gameEndSound.play()
     }
     
     const shuffle = (array) => {
